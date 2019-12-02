@@ -1,8 +1,0 @@
-# 01
-xtrabackup --prepare --apply-log-only --target-dir=<FULL_DIR>
-
-# 02
-xtrabackup --prepare --apply-log-only --target-dir=<FULL_DIR> --incremental-dir=<INCR_DIR>
-
-# 03
-xtrabackup --copy-back --target-dir=/backup/MEB/<FULL_INCR_DIR> --datadir=<DATADIR>

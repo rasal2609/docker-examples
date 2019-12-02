@@ -1,6 +1,0 @@
-#
-# Matthias Jung, Raphael Salguero / ORDIX AG
-#
-
-Erstellen Sie einen Login-Pfad mit dem Namen "readonlyreader" für den Benutzer 'reader'@'localhost'.
-Ermöglichen Sie so eine Verbindung ohne Eingabe des Passwortes.
