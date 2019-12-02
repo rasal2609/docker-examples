@@ -1,6 +1,0 @@
-#
-# Matthias Jung, Raphael Salguero / ORDIX AG
-#
-
-Konfigurieren Sie den MySQL-Router führ das zuvor erstellte Cluster "ORDIX" und starten Sie ihn.
-Versuchen Sie anschließend über die verschiedenen Ports 6446 und 6447 Datensätze zu einer Tabelle hinzuzufügen.
