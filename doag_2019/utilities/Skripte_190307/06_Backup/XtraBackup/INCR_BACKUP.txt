@@ -1,0 +1,22 @@
+#
+# Example of a full & one incremental backup (& restore).
+# Please check all variables (user, password, socket, ....) and adjust to your system.
+#
+
+# 01) Full Backup
+xtrabackup --target-dir=/mysql/backups/full  --user=backup --password=backup --socket=/tmp/mysql.sock --backup
+
+#02) Incremtnal Backup
+
+xtrabackup --target-dir=/mysql/backups/inc1 --incremental-basedir=/mysql/backups/full --user=backup --password=backup --socket=/tmp/mysql.sock --backup
+
+### Repeate step 02) as many time (with different --target-dir) as many times as you like
+
+# 03) Prepare restore of full backup
+xtrabackup --target-dir=/mysql/backups/full --prepare --apply-log-only
+
+# 04) Apply incremental backup(s) to full backup
+xtrabackup --target-dir=/mysql/backups/full --prepare --apply-log-only --incremental-dir /mysql/backups/inc1
+
+# 05) Shutdown Server and copy or move back data
+xtrabackup --target-dir=/mysql/backups/full --copy-back --datadir=/mysql/db01

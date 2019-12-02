@@ -1,0 +1,12 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+bash> cd /opt/mysql/mysql-8.0.12_source/
+bash> ccmake .
+
+### edit settings ####
+
+bash> make
+bash> make install
+bash> ls -la /opt/mysql/mysql-8.0.12/

@@ -1,0 +1,12 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Lesen Sie das Tablespace der Tabelle "actor" direkt aus TwinDb Recoery Tool:
+
+    /opt/mysql/undrop-for-innodb-master
+
+Weiter Informationen zu diesem Tool finden Sie unter:
+
+    https://github.com/twindb/undrop-for-innodb
+    http://thelazylog.com/restore-data-from-innodb-file-idb-frm/ (Tutorial=

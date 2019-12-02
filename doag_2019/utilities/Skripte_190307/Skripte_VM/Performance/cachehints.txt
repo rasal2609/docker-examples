@@ -1,0 +1,12 @@
+#
+# query_cache_type = 1 => an
+#                  = 2 => wird bei hint genutzt
+#
+#
+# select SQL_CACHE * from table;
+# select /*! SQL_CACHE */ * from table;
+#
+# select SQL_NO_CACHE * from table;
+# select /*! SQL_NO_CACHE */ * from table;
+# 
+# Datei abfragen im Optimize Ordner

@@ -1,0 +1,35 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Legen Sie auf Ihrem zweiten Server ebenfalls eine DB "reports" an.
+
+
+Erzeugen Sie mit dem folgenden Kommando einen User auf dem ersten Server, der über das Netzwerk zu erreichen ist:
+
+    create user 'reports'@'%' identified by 'reports';
+    grant select on reports.* to 'reports'@'%';
+    
+Legen Sie auf dem zweiten Server einen "Server" "report_link" mit den entsprechenden Rechten an.
+
+Legen Sie die Tabelle "rent_information" des ersten Servers ebenfalls auf dem zweiten Server an:
+    
+    mysql> show create table rent_information;
++------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Table            | Create Table                                                                                                                                                                                                                                                                                                                                                                          |
++------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| rent_information | CREATE TABLE `rent_information` (
+  `first_name` varchar(45) CHARACTER SET utf8,
+  `last_name` varchar(45) CHARACTER SET utf8,
+  `email` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
+  `title` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `description` text CHARACTER SET utf8
+) /*!50100 TABLESPACE `reports` */ ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci |
++------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0,00 sec)
+#
+
+
+
+    
+Verändern Sie die Tabelle so, dass über den Link "report_link" eine Anbindung an den ersten Server erfolgt.

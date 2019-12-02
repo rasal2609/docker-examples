@@ -1,0 +1,8 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Untersuchen Sie das Verzeichnis /opt/mysql.
+Schauen Sie sich an welche MySQL Versionen auf diesem Server verfügbar sind.
+
+Welches Version scheint aktuell "produktiv" zu sein? 

@@ -1,0 +1,91 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Lassen Sie sich alle Tabellen der Datenbank MySQL anzeigen.
+Nutzen Sie dazu ein SQL Statement (SELECT) innerhalb der "information_schema"-Datenbank.
+
+Bestimmen Sie die Anzahl der Tabellen in den Datenbanken.
+Bestimmen Sie die Größe der Daten und Indexbereiche nach Datenbanken.
+Bestimmen Sie die Verwendung der Engines (hinsichtlich des Datenvolumens; z.B. in MB).
+
+## Lösung
+# Alle Tabellen der MySQL Datenbank
+root@information_schema>select table_name, table_type from information_schema.tables where table_schema = 'mysql';
++---------------------------+------------+
+| TABLE_NAME                | TABLE_TYPE |
++---------------------------+------------+
+| columns_priv              | BASE TABLE |
+| component                 | BASE TABLE |
+| db                        | BASE TABLE |
+| default_roles             | BASE TABLE |
+| engine_cost               | BASE TABLE |
+| func                      | BASE TABLE |
+| general_log               | BASE TABLE |
+| global_grants             | BASE TABLE |
+| gtid_executed             | BASE TABLE |
+| help_category             | BASE TABLE |
+| help_keyword              | BASE TABLE |
+| help_relation             | BASE TABLE |
+| help_topic                | BASE TABLE |
+| innodb_index_stats        | BASE TABLE |
+| innodb_table_stats        | BASE TABLE |
+| password_history          | BASE TABLE |
+| plugin                    | BASE TABLE |
+| procs_priv                | BASE TABLE |
+| proxies_priv              | BASE TABLE |
+| role_edges                | BASE TABLE |
+| server_cost               | BASE TABLE |
+| servers                   | BASE TABLE |
+| slave_master_info         | BASE TABLE |
+| slave_relay_log_info      | BASE TABLE |
+| slave_worker_info         | BASE TABLE |
+| slow_log                  | BASE TABLE |
+| tables_priv               | BASE TABLE |
+| time_zone                 | BASE TABLE |
+| time_zone_leap_second     | BASE TABLE |
+| time_zone_name            | BASE TABLE |
+| time_zone_transition      | BASE TABLE |
+| time_zone_transition_type | BASE TABLE |
+| user                      | BASE TABLE |
++---------------------------+------------+
+33 rows in set (0,01 sec)
+
+# Anzahl aller Tabellen pro Datenbank
+root@information_schema>select table_schema, count(*) from information_schema.tables group by table_schema;
++--------------------+----------+
+| TABLE_SCHEMA       | count(*) |
++--------------------+----------+
+| information_schema |       62 |
+| mysql              |       33 |
+| performance_schema |      102 |
+| sakila             |       23 |
+| sys                |      101 |
++--------------------+----------+
+5 rows in set (0,01 sec)
+
+# Größe der Daten und Indexbereiche
+root@information_schema>select table_schema, sum(DATA_LENGTH)/1024, sum(INDEX_LENGTH)/1024 from information_schema.tables group by table_schema;
++--------------------+-----------------------+------------------------+
+| TABLE_SCHEMA       | sum(DATA_LENGTH)/1024 | sum(INDEX_LENGTH)/1024 |
++--------------------+-----------------------+------------------------+
+| information_schema |                0.0000 |                 0.0000 |
+| mysql              |             2208.0000 |               240.0000 |
+| performance_schema |                0.0000 |                 0.0000 |
+| sakila             |             4272.0000 |              2336.0000 |
+| sys                |               16.0000 |                 0.0000 |
++--------------------+-----------------------+------------------------+
+5 rows in set (0,01 sec)
+
+# Verwendung der Engines
+root@information_schema>select engine, sum(DATA_LENGTH)/1024, sum(INDEX_LENGTH)/1024 from information_schema.tables group by engine;
++--------------------+-----------------------+------------------------+
+| ENGINE             | sum(DATA_LENGTH)/1024 | sum(INDEX_LENGTH)/1024 |
++--------------------+-----------------------+------------------------+
+| NULL               |                0.0000 |                 0.0000 |
+| InnoDB             |             6496.0000 |              2576.0000 |
+| CSV                |                0.0000 |                 0.0000 |
+| PERFORMANCE_SCHEMA |                0.0000 |                 0.0000 |
++--------------------+-----------------------+------------------------+
+4 rows in set (0,01 sec) 
+

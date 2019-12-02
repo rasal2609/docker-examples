@@ -1,0 +1,278 @@
+sending incremental file list
+db01/
+db01/auto.cnf
+             56 100%    0.00kB/s    0:00:00               56 100%    0.00kB/s    0:00:00 (xfr#1, to-chk=133/135)
+db01/binlog.000001
+            424 100%  414.06kB/s    0:00:00              424 100%  414.06kB/s    0:00:00 (xfr#2, to-chk=132/135)
+db01/binlog.000002
+            199 100%  194.34kB/s    0:00:00              199 100%  194.34kB/s    0:00:00 (xfr#3, to-chk=131/135)
+db01/binlog.000003
+            155 100%  151.37kB/s    0:00:00              155 100%  151.37kB/s    0:00:00 (xfr#4, to-chk=130/135)
+db01/binlog.index
+             48 100%   46.88kB/s    0:00:00               48 100%   46.88kB/s    0:00:00 (xfr#5, to-chk=129/135)
+db01/ca-key.pem
+          1,680 100%    1.60MB/s    0:00:00            1,680 100%    1.60MB/s    0:00:00 (xfr#6, to-chk=128/135)
+db01/ca.pem
+          1,112 100%    1.06MB/s    0:00:00            1,112 100%    1.06MB/s    0:00:00 (xfr#7, to-chk=127/135)
+db01/client-cert.pem
+          1,112 100%    1.06MB/s    0:00:00            1,112 100%    1.06MB/s    0:00:00 (xfr#8, to-chk=126/135)
+db01/client-key.pem
+          1,680 100%    1.60MB/s    0:00:00            1,680 100%    1.60MB/s    0:00:00 (xfr#9, to-chk=125/135)
+db01/ib_buffer_pool
+          5,927 100%    5.65MB/s    0:00:00            5,927 100%    5.65MB/s    0:00:00 (xfr#10, to-chk=124/135)
+db01/ib_logfile0
+         32,768   0%   31.25MB/s    0:00:01       50,331,648 100%   93.57MB/s    0:00:00 (xfr#11, to-chk=123/135)
+db01/ib_logfile1
+         32,768   0%   62.38kB/s    0:13:26       23,265,280  46%   22.19MB/s    0:00:01       50,331,648 100%   37.77MB/s    0:00:01 (xfr#12, to-chk=122/135)
+db01/ibdata1
+         32,768   0%  117.22kB/s    0:01:47       12,582,912 100%   30.23MB/s    0:00:00 (xfr#13, to-chk=121/135)
+db01/ibtmp1
+         32,768   0%   80.60kB/s    0:02:35       12,582,912 100%   22.60MB/s    0:00:00 (xfr#14, to-chk=120/135)
+db01/localhost.pid
+              5 100%    0.01kB/s    0:00:00                5 100%    0.01kB/s    0:00:00 (xfr#15, to-chk=119/135)
+db01/mysql.ibd
+         32,768   0%   60.26kB/s    0:06:57       25,165,824 100%   28.88MB/s    0:00:00 (xfr#16, to-chk=118/135)
+db01/private_key.pem
+          1,676 100%    1.97kB/s    0:00:00            1,676 100%    1.97kB/s    0:00:00 (xfr#17, to-chk=117/135)
+db01/public_key.pem
+            452 100%    0.53kB/s    0:00:00              452 100%    0.53kB/s    0:00:00 (xfr#18, to-chk=116/135)
+db01/server-cert.pem
+          1,112 100%    1.31kB/s    0:00:00            1,112 100%    1.31kB/s    0:00:00 (xfr#19, to-chk=115/135)
+db01/server-key.pem
+          1,676 100%    1.97kB/s    0:00:00            1,676 100%    1.97kB/s    0:00:00 (xfr#20, to-chk=114/135)
+db01/undo_001
+         32,768   0%   38.46kB/s    0:04:31        1,146,880  10%    1.09MB/s    0:00:08       10,485,760 100%    8.87MB/s    0:00:01 (xfr#21, to-chk=113/135)
+db01/undo_002
+         32,768   0%  248.06kB/s    0:00:42       10,485,760 100%   32.36MB/s    0:00:00 (xfr#22, to-chk=112/135)
+db01/mysql/
+db01/mysql/general_log.CSM
+             35 100%    0.11kB/s    0:00:00               35 100%    0.11kB/s    0:00:00 (xfr#23, to-chk=108/135)
+db01/mysql/general_log.CSV
+              0 100%    0.00kB/s    0:00:00 (xfr#24, to-chk=107/135)
+db01/mysql/general_log_195.sdi
+          5,521 100%   17.39kB/s    0:00:00            5,521 100%   17.39kB/s    0:00:00 (xfr#25, to-chk=106/135)
+db01/mysql/slow_log.CSM
+             35 100%    0.11kB/s    0:00:00               35 100%    0.11kB/s    0:00:00 (xfr#26, to-chk=105/135)
+db01/mysql/slow_log.CSV
+              0 100%    0.00kB/s    0:00:00 (xfr#27, to-chk=104/135)
+db01/mysql/slow_log_196.sdi
+         11,746 100%   37.00kB/s    0:00:00           11,746 100%   37.00kB/s    0:00:00 (xfr#28, to-chk=103/135)
+db01/performance_schema/
+db01/performance_schema/accounts_133.sdi
+          4,089 100%   12.88kB/s    0:00:00            4,089 100%   12.88kB/s    0:00:00 (xfr#29, to-chk=102/135)
+db01/performance_schema/cond_instances_72.sdi
+          3,593 100%   11.32kB/s    0:00:00            3,593 100%   11.32kB/s    0:00:00 (xfr#30, to-chk=101/135)
+db01/performance_schema/data_lock_waits_148.sdi
+         12,933 100%   40.74kB/s    0:00:00           12,933 100%   40.74kB/s    0:00:00 (xfr#31, to-chk=100/135)
+db01/performance_schema/data_locks_147.sdi
+         14,832 100%   46.72kB/s    0:00:00           14,832 100%   46.72kB/s    0:00:00 (xfr#32, to-chk=99/135)
+db01/performance_schema/events_errors_su_127.sdi
+          7,096 100%   22.35kB/s    0:00:00            7,096 100%   22.35kB/s    0:00:00 (xfr#33, to-chk=98/135)
+db01/performance_schema/events_errors_su_128.sdi
+          7,096 100%   22.35kB/s    0:00:00            7,096 100%   22.35kB/s    0:00:00 (xfr#34, to-chk=97/135)
+db01/performance_schema/events_errors_su_129.sdi
+          7,881 100%   24.83kB/s    0:00:00            7,881 100%   24.83kB/s    0:00:00 (xfr#35, to-chk=96/135)
+db01/performance_schema/events_errors_su_130.sdi
+          7,131 100%   22.46kB/s    0:00:00            7,131 100%   22.46kB/s    0:00:00 (xfr#36, to-chk=95/135)
+db01/performance_schema/events_errors_su_131.sdi
+          6,324 100%   19.86kB/s    0:00:00            6,324 100%   19.86kB/s    0:00:00 (xfr#37, to-chk=94/135)
+db01/performance_schema/events_stages_cu_99.sdi
+         10,894 100%   34.21kB/s    0:00:00           10,894 100%   34.21kB/s    0:00:00 (xfr#38, to-chk=93/135)
+db01/performance_schema/events_stages_hi_100.sdi
+         10,894 100%   34.21kB/s    0:00:00           10,894 100%   34.21kB/s    0:00:00 (xfr#39, to-chk=92/135)
+db01/performance_schema/events_stages_hi_101.sdi
+         10,537 100%   33.09kB/s    0:00:00           10,537 100%   33.09kB/s    0:00:00 (xfr#40, to-chk=91/135)
+db01/performance_schema/events_stages_su_102.sdi
+          7,137 100%   22.41kB/s    0:00:00            7,137 100%   22.41kB/s    0:00:00 (xfr#41, to-chk=90/135)
+db01/performance_schema/events_stages_su_103.sdi
+          7,889 100%   24.77kB/s    0:00:00            7,889 100%   24.77kB/s    0:00:00 (xfr#42, to-chk=89/135)
+db01/performance_schema/events_stages_su_104.sdi
+          7,104 100%   22.31kB/s    0:00:00            7,104 100%   22.31kB/s    0:00:00 (xfr#43, to-chk=88/135)
+db01/performance_schema/events_stages_su_105.sdi
+          7,104 100%   21.95kB/s    0:00:00            7,104 100%   21.95kB/s    0:00:00 (xfr#44, to-chk=87/135)
+db01/performance_schema/events_stages_su_106.sdi
+          6,327 100%   16.61kB/s    0:00:00            6,327 100%   16.61kB/s    0:00:00 (xfr#45, to-chk=86/135)
+db01/performance_schema/events_statement_107.sdi
+         32,512 100%   85.12kB/s    0:00:00           32,512 100%   85.12kB/s    0:00:00 (xfr#46, to-chk=85/135)
+db01/performance_schema/events_statement_108.sdi
+         32,512 100%   83.77kB/s    0:00:00           32,512 100%   83.77kB/s    0:00:00 (xfr#47, to-chk=84/135)
+db01/performance_schema/events_statement_109.sdi
+         32,155 100%   82.85kB/s    0:00:00           32,155 100%   82.85kB/s    0:00:00 (xfr#48, to-chk=83/135)
+db01/performance_schema/events_statement_110.sdi
+         21,529 100%   55.33kB/s    0:00:00           21,529 100%   55.33kB/s    0:00:00 (xfr#49, to-chk=82/135)
+db01/performance_schema/events_statement_111.sdi
+         22,282 100%   57.26kB/s    0:00:00           22,282 100%   57.26kB/s    0:00:00 (xfr#50, to-chk=81/135)
+db01/performance_schema/events_statement_112.sdi
+         21,496 100%   55.24kB/s    0:00:00           21,496 100%   55.24kB/s    0:00:00 (xfr#51, to-chk=80/135)
+db01/performance_schema/events_statement_113.sdi
+         21,496 100%   55.10kB/s    0:00:00           21,496 100%   55.10kB/s    0:00:00 (xfr#52, to-chk=79/135)
+db01/performance_schema/events_statement_114.sdi
+         20,718 100%   53.10kB/s    0:00:00           20,718 100%   53.10kB/s    0:00:00 (xfr#53, to-chk=78/135)
+db01/performance_schema/events_statement_115.sdi
+         27,579 100%   70.50kB/s    0:00:00           27,579 100%   70.50kB/s    0:00:00 (xfr#54, to-chk=77/135)
+db01/performance_schema/events_statement_116.sdi
+         26,291 100%   67.21kB/s    0:00:00           26,291 100%   67.21kB/s    0:00:00 (xfr#55, to-chk=76/135)
+db01/performance_schema/events_statement_117.sdi
+          5,631 100%   14.36kB/s    0:00:00            5,631 100%   14.36kB/s    0:00:00 (xfr#56, to-chk=75/135)
+db01/performance_schema/events_statement_118.sdi
+          7,216 100%   18.40kB/s    0:00:00            7,216 100%   18.40kB/s    0:00:00 (xfr#57, to-chk=74/135)
+db01/performance_schema/events_transacti_119.sdi
+         19,998 100%   50.99kB/s    0:00:00           19,998 100%   50.99kB/s    0:00:00 (xfr#58, to-chk=73/135)
+db01/performance_schema/events_transacti_120.sdi
+         19,998 100%   50.86kB/s    0:00:00           19,998 100%   50.86kB/s    0:00:00 (xfr#59, to-chk=72/135)
+db01/performance_schema/events_transacti_121.sdi
+         19,641 100%   49.82kB/s    0:00:00           19,641 100%   49.82kB/s    0:00:00 (xfr#60, to-chk=71/135)
+db01/performance_schema/events_transacti_122.sdi
+         14,728 100%   37.36kB/s    0:00:00           14,728 100%   37.36kB/s    0:00:00 (xfr#61, to-chk=70/135)
+db01/performance_schema/events_transacti_123.sdi
+         15,481 100%   39.17kB/s    0:00:00           15,481 100%   39.17kB/s    0:00:00 (xfr#62, to-chk=69/135)
+db01/performance_schema/events_transacti_124.sdi
+         14,695 100%   37.18kB/s    0:00:00           14,695 100%   37.18kB/s    0:00:00 (xfr#63, to-chk=68/135)
+db01/performance_schema/events_transacti_125.sdi
+         14,695 100%   37.18kB/s    0:00:00           14,695 100%   37.18kB/s    0:00:00 (xfr#64, to-chk=67/135)
+db01/performance_schema/events_transacti_126.sdi
+         13,917 100%   35.21kB/s    0:00:00           13,917 100%   35.21kB/s    0:00:00 (xfr#65, to-chk=66/135)
+db01/performance_schema/events_waits_cur_73.sdi
+         16,197 100%   40.98kB/s    0:00:00           16,197 100%   40.98kB/s    0:00:00 (xfr#66, to-chk=65/135)
+db01/performance_schema/events_waits_his_74.sdi
+         16,197 100%   40.98kB/s    0:00:00           16,197 100%   40.98kB/s    0:00:00 (xfr#67, to-chk=64/135)
+db01/performance_schema/events_waits_his_75.sdi
+         15,840 100%   39.97kB/s    0:00:00           15,840 100%   39.97kB/s    0:00:00 (xfr#68, to-chk=63/135)
+db01/performance_schema/events_waits_sum_76.sdi
+          7,103 100%   17.92kB/s    0:00:00            7,103 100%   17.88kB/s    0:00:00 (xfr#69, to-chk=62/135)
+db01/performance_schema/events_waits_sum_77.sdi
+          7,384 100%   18.58kB/s    0:00:00            7,384 100%   18.58kB/s    0:00:00 (xfr#70, to-chk=61/135)
+db01/performance_schema/events_waits_sum_78.sdi
+          7,136 100%   17.96kB/s    0:00:00            7,136 100%   17.96kB/s    0:00:00 (xfr#71, to-chk=60/135)
+db01/performance_schema/events_waits_sum_79.sdi
+          7,103 100%   17.88kB/s    0:00:00            7,103 100%   17.88kB/s    0:00:00 (xfr#72, to-chk=59/135)
+db01/performance_schema/events_waits_sum_80.sdi
+          7,888 100%   19.85kB/s    0:00:00            7,888 100%   19.85kB/s    0:00:00 (xfr#73, to-chk=58/135)
+db01/performance_schema/events_waits_sum_81.sdi
+          6,326 100%   15.92kB/s    0:00:00            6,326 100%   15.92kB/s    0:00:00 (xfr#74, to-chk=57/135)
+db01/performance_schema/file_instances_82.sdi
+          7,128 100%   17.89kB/s    0:00:00            7,128 100%   17.89kB/s    0:00:00 (xfr#75, to-chk=56/135)
+db01/performance_schema/file_summary_by__83.sdi
+         19,124 100%   48.01kB/s    0:00:00           19,124 100%   48.01kB/s    0:00:00 (xfr#76, to-chk=55/135)
+db01/performance_schema/file_summary_by__84.sdi
+         24,038 100%   60.35kB/s    0:00:00           24,038 100%   60.35kB/s    0:00:00 (xfr#77, to-chk=54/135)
+db01/performance_schema/global_status_166.sdi
+          2,921 100%    7.33kB/s    0:00:00            2,921 100%    7.33kB/s    0:00:00 (xfr#78, to-chk=53/135)
+db01/performance_schema/global_variables_169.sdi
+          2,924 100%    7.34kB/s    0:00:00            2,924 100%    7.34kB/s    0:00:00 (xfr#79, to-chk=52/135)
+db01/performance_schema/host_cache_85.sdi
+         23,677 100%   59.29kB/s    0:00:00           23,677 100%   59.29kB/s    0:00:00 (xfr#80, to-chk=51/135)
+db01/performance_schema/hosts_134.sdi
+          3,304 100%    8.27kB/s    0:00:00            3,304 100%    8.27kB/s    0:00:00 (xfr#81, to-chk=50/135)
+db01/performance_schema/log_status_159.sdi
+          3,919 100%    9.81kB/s    0:00:00            3,919 100%    9.81kB/s    0:00:00 (xfr#82, to-chk=49/135)
+db01/performance_schema/memory_summary_b_141.sdi
+         11,661 100%   29.20kB/s    0:00:00           11,661 100%   29.20kB/s    0:00:00 (xfr#83, to-chk=48/135)
+db01/performance_schema/memory_summary_b_142.sdi
+         10,875 100%   27.16kB/s    0:00:00           10,875 100%   27.16kB/s    0:00:00 (xfr#84, to-chk=47/135)
+db01/performance_schema/memory_summary_b_143.sdi
+         10,908 100%   27.24kB/s    0:00:00           10,908 100%   27.24kB/s    0:00:00 (xfr#85, to-chk=46/135)
+db01/performance_schema/memory_summary_b_144.sdi
+         10,875 100%   27.09kB/s    0:00:00           10,875 100%   27.09kB/s    0:00:00 (xfr#86, to-chk=45/135)
+db01/performance_schema/memory_summary_g_140.sdi
+         10,097 100%   25.15kB/s    0:00:00           10,097 100%   25.15kB/s    0:00:00 (xfr#87, to-chk=44/135)
+db01/performance_schema/metadata_locks_146.sdi
+         10,928 100%   27.22kB/s    0:00:00           10,928 100%   27.22kB/s    0:00:00 (xfr#88, to-chk=43/135)
+db01/performance_schema/mutex_instances_86.sdi
+          4,655 100%   11.60kB/s    0:00:00            4,655 100%   11.60kB/s    0:00:00 (xfr#89, to-chk=42/135)
+db01/performance_schema/objects_summary__87.sdi
+          7,191 100%   17.87kB/s    0:00:00            7,191 100%   17.87kB/s    0:00:00 (xfr#90, to-chk=41/135)
+db01/performance_schema/performance_time_88.sdi
+          3,917 100%    9.73kB/s    0:00:00            3,917 100%    9.73kB/s    0:00:00 (xfr#91, to-chk=40/135)
+db01/performance_schema/persisted_variab_172.sdi
+          2,927 100%    7.27kB/s    0:00:00            2,927 100%    7.27kB/s    0:00:00 (xfr#92, to-chk=39/135)
+db01/performance_schema/prepared_stateme_160.sdi
+         29,126 100%   72.19kB/s    0:00:00           29,126 100%   72.19kB/s    0:00:00 (xfr#93, to-chk=38/135)
+db01/performance_schema/replication_appl_152.sdi
+          2,937 100%    7.26kB/s    0:00:00            2,937 100%    7.26kB/s    0:00:00 (xfr#94, to-chk=37/135)
+db01/performance_schema/replication_appl_153.sdi
+          4,488 100%   11.10kB/s    0:00:00            4,488 100%   11.10kB/s    0:00:00 (xfr#95, to-chk=36/135)
+db01/performance_schema/replication_appl_154.sdi
+         18,818 100%   46.52kB/s    0:00:00           18,818 100%   46.52kB/s    0:00:00 (xfr#96, to-chk=35/135)
+db01/performance_schema/replication_appl_155.sdi
+         19,600 100%   48.21kB/s    0:00:00           19,600 100%   48.21kB/s    0:00:00 (xfr#97, to-chk=34/135)
+db01/performance_schema/replication_appl_157.sdi
+          6,308 100%   15.52kB/s    0:00:00            6,308 100%   15.52kB/s    0:00:00 (xfr#98, to-chk=33/135)
+db01/performance_schema/replication_appl_158.sdi
+          4,283 100%   10.54kB/s    0:00:00            4,283 100%   10.54kB/s    0:00:00 (xfr#99, to-chk=32/135)
+db01/performance_schema/replication_conn_149.sdi
+         32,768  83%   80.40kB/s    0:00:00           39,125 100%   95.76kB/s    0:00:00 (xfr#100, to-chk=31/135)
+db01/performance_schema/replication_conn_151.sdi
+         23,012 100%   56.32kB/s    0:00:00           23,012 100%   56.32kB/s    0:00:00 (xfr#101, to-chk=30/135)
+db01/performance_schema/replication_grou_150.sdi
+          7,825 100%   19.15kB/s    0:00:00            7,825 100%   19.15kB/s    0:00:00 (xfr#102, to-chk=29/135)
+db01/performance_schema/replication_grou_156.sdi
+         11,552 100%   28.27kB/s    0:00:00           11,552 100%   28.27kB/s    0:00:00 (xfr#103, to-chk=28/135)
+db01/performance_schema/rwlock_instances_89.sdi
+          5,420 100%   13.23kB/s    0:00:00            5,420 100%   13.23kB/s    0:00:00 (xfr#104, to-chk=27/135)
+db01/performance_schema/session_account__139.sdi
+          4,291 100%   10.48kB/s    0:00:00            4,291 100%   10.48kB/s    0:00:00 (xfr#105, to-chk=26/135)
+db01/performance_schema/session_connect__138.sdi
+          4,283 100%   10.46kB/s    0:00:00            4,283 100%   10.46kB/s    0:00:00 (xfr#106, to-chk=25/135)
+db01/performance_schema/session_status_167.sdi
+          2,922 100%    7.12kB/s    0:00:00            2,922 100%    7.12kB/s    0:00:00 (xfr#107, to-chk=24/135)
+db01/performance_schema/session_variable_170.sdi
+          2,925 100%    7.12kB/s    0:00:00            2,925 100%    7.12kB/s    0:00:00 (xfr#108, to-chk=23/135)
+db01/performance_schema/setup_actors_90.sdi
+          5,648 100%   13.75kB/s    0:00:00            5,648 100%   13.75kB/s    0:00:00 (xfr#109, to-chk=22/135)
+db01/performance_schema/setup_consumers_91.sdi
+          2,964 100%    7.22kB/s    0:00:00            2,964 100%    7.22kB/s    0:00:00 (xfr#110, to-chk=21/135)
+db01/performance_schema/setup_instrument_92.sdi
+          6,525 100%   15.89kB/s    0:00:00            6,525 100%   15.89kB/s    0:00:00 (xfr#111, to-chk=20/135)
+db01/performance_schema/setup_objects_93.sdi
+          5,917 100%   14.41kB/s    0:00:00            5,917 100%   14.41kB/s    0:00:00 (xfr#112, to-chk=19/135)
+db01/performance_schema/setup_threads_94.sdi
+          6,372 100%   15.52kB/s    0:00:00            6,372 100%   15.52kB/s    0:00:00 (xfr#113, to-chk=18/135)
+db01/performance_schema/socket_instances_135.sdi
+          8,337 100%   20.30kB/s    0:00:00            8,337 100%   20.25kB/s    0:00:00 (xfr#114, to-chk=17/135)
+db01/performance_schema/socket_summary_b_136.sdi
+         20,208 100%   49.09kB/s    0:00:00           20,208 100%   49.09kB/s    0:00:00 (xfr#115, to-chk=16/135)
+db01/performance_schema/socket_summary_b_137.sdi
+         19,142 100%   46.50kB/s    0:00:00           19,142 100%   46.50kB/s    0:00:00 (xfr#116, to-chk=15/135)
+db01/performance_schema/status_by_accoun_162.sdi
+          4,483 100%   10.89kB/s    0:00:00            4,483 100%   10.89kB/s    0:00:00 (xfr#117, to-chk=14/135)
+db01/performance_schema/status_by_host_163.sdi
+          3,698 100%    8.98kB/s    0:00:00            3,698 100%    8.98kB/s    0:00:00 (xfr#118, to-chk=13/135)
+db01/performance_schema/status_by_thread_164.sdi
+          3,731 100%    9.06kB/s    0:00:00            3,731 100%    9.06kB/s    0:00:00 (xfr#119, to-chk=12/135)
+db01/performance_schema/status_by_user_165.sdi
+          3,698 100%    8.98kB/s    0:00:00            3,698 100%    8.98kB/s    0:00:00 (xfr#120, to-chk=11/135)
+db01/performance_schema/table_handles_145.sdi
+          8,857 100%   21.52kB/s    0:00:00            8,857 100%   21.52kB/s    0:00:00 (xfr#121, to-chk=10/135)
+db01/performance_schema/table_io_waits_s_95.sdi
+         30,624 100%   73.66kB/s    0:00:00           30,624 100%   73.66kB/s    0:00:00 (xfr#122, to-chk=9/135)
+db01/performance_schema/table_io_waits_s_96.sdi
+         29,827 100%   71.74kB/s    0:00:00           29,827 100%   71.74kB/s    0:00:00 (xfr#123, to-chk=8/135)
+db01/performance_schema/table_lock_waits_97.sdi
+         32,768  61%   78.62kB/s    0:00:00           53,000 100%  127.17kB/s    0:00:00 (xfr#124, to-chk=7/135)
+db01/performance_schema/threads_98.sdi
+         17,120 100%   40.88kB/s    0:00:00           17,120 100%   40.88kB/s    0:00:00 (xfr#125, to-chk=6/135)
+db01/performance_schema/user_defined_fun_173.sdi
+          5,336 100%   12.74kB/s    0:00:00            5,336 100%   12.74kB/s    0:00:00 (xfr#126, to-chk=5/135)
+db01/performance_schema/user_variables_b_161.sdi
+          3,729 100%    8.90kB/s    0:00:00            3,729 100%    8.90kB/s    0:00:00 (xfr#127, to-chk=4/135)
+db01/performance_schema/users_132.sdi
+          3,304 100%    7.89kB/s    0:00:00            3,304 100%    7.89kB/s    0:00:00 (xfr#128, to-chk=3/135)
+db01/performance_schema/variables_by_thr_168.sdi
+          3,734 100%    8.89kB/s    0:00:00            3,734 100%    8.89kB/s    0:00:00 (xfr#129, to-chk=2/135)
+db01/performance_schema/variables_info_171.sdi
+          7,406 100%   17.64kB/s    0:00:00            7,406 100%   17.64kB/s    0:00:00 (xfr#130, to-chk=1/135)
+db01/sys/
+db01/sys/sys_config.ibd
+         32,768  28%   78.05kB/s    0:00:01          114,688 100%  272.51kB/s    0:00:00 (xfr#131, to-chk=0/135)
+
+sent 173,413,147 bytes  received 2,533 bytes  69,366,272.00 bytes/sec
+total size is 173,362,052  speedup is 1.00
+sleep(5)
+0
+*************************** 1. row ***************************
+             File: binlog.000003
+         Position: 155
+     Binlog_Do_DB: 
+ Binlog_Ignore_DB: 
+Executed_Gtid_Set: 

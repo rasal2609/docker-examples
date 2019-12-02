@@ -1,0 +1,131 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Outfile
+Exportieren Sie zunächst die Inhalte der Tabell sakila.payment in ein Outfile.
+Löschen Sie nun den gesamten Inhalt der Tabelle und Spielen sie den gesamten Inhalt aus dem Outfile wieder ein. (REPLACE)
+Löschen Sie als nächstes nur bestimmte Datensätze der Tabelle sakila.payment und spielen Sie auch nur diese Datensätze wieder ein. (IGNORE)
+
+mysqldump
+Erstellen Sie ein vollständiges Backup der Datenbank sakila mit dem Tool mysqldump. Stellen Sie dabei sicher, dass auch der CREATE DATABASE Befehl exportiert wird.
+Löschen Sie die Datenbank im Anschluss und Spielen Sie das gesamte Backup wieder ein.
+
+
+##Lösung
+#Outfile
+root@sakila>select * from payment into outfile '/tmp/payment.csv';
+Query OK, 16049 rows affected (0,30 sec)
+
+root@sakila>delete from payment;
+Query OK, 16049 rows affected (1,56 sec)
+
+root@sakila>select count(*) from payment;
++----------+
+| count(*) |
++----------+
+|        0 |
++----------+
+1 row in set (0,00 sec)
+
+root@sakila>
+root@sakila>load data infile '/tmp/payment.csv' replace into table payment;
+Query OK, 16049 rows affected (1,22 sec)
+Records: 16049  Deleted: 0  Skipped: 0  Warnings: 0
+
+root@sakila>
+root@sakila>select count(*) from payment;
++----------+
+| count(*) |
++----------+
+|    16049 |
++----------+
+1 row in set (0,01 sec)
+
+root@sakila>delete from payment where mod(payment_id,2)=0;
+Query OK, 8024 rows affected (1,06 sec)
+
+root@sakila>load data infile '/tmp/payment.csv' ign^Cnto table payment;
+root@sakila>select count(*) from payment;
++----------+
+| count(*) |
++----------+
+|     8025 |
++----------+
+1 row in set (0,00 sec)
+
+root@sakila>load data infile '/tmp/payment.csv' ignore into table payment;
+Query OK, 8024 rows affected, 8025 warnings (2,67 sec)
+Records: 16049  Deleted: 0  Skipped: 8025  Warnings: 8025
+
+root@sakila>
+root@sakila>
+root@sakila>select count(*) from payment;
++----------+
+| count(*) |
++----------+
+|    16049 |
++----------+
+1 row in set (0,00 sec)
+
+# mysqldump
+[root@vm132 backups]# mysqldump --user=root --socket=/tmp/mysql01.sock --opt --databases sakila > sakila.sql
+Warning: A partial dump from a server that has GTIDs will by default include the GTIDs of all transactions, even those that changed suppressed parts of the database. If you don't want to restore GTIDs, pass --set-gtid-purged=OFF. To make a complete dump, pass --all-databases --triggers --routines --events.
+[root@vm132 backups]# ls -al
+insgesamt 3304
+drwxr-xr-x  2 mysql mysql      24 12. Mär 17:58 .
+drwxr-xr-x. 8 root  root       83 29. Sep 17:56 ..
+-rw-r--r--  1 root  root  3381315 12. Mär 17:58 sakila.sql
+
+[root@vm132 backups]# mysql -uroot
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 78
+Server version: 8.0.11 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+root@(none)>source /mysql/backups/sakila.sql
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+Query OK, 0 rows affected (0,00 sec)
+
+...
+
+root@sakila>show tables;
++----------------------------+
+| Tables_in_sakila           |
++----------------------------+
+| actor                      |
+| actor_info                 |
+| address                    |
+| category                   |
+| city                       |
+| country                    |
+| customer                   |
+| customer_list              |
+| film                       |
+| film_actor                 |
+| film_category              |
+| film_list                  |
+| film_text                  |
+| inventory                  |
+| language                   |
+| nicer_but_slower_film_list |
+| payment                    |
+| rental                     |
+| sales_by_film_category     |
+| sales_by_store             |
+| staff                      |
+| staff_list                 |
+| store                      |
++----------------------------+
+23 rows in set (0,00 sec)
+
