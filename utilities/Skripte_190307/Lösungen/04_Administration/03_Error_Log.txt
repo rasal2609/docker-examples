@@ -1,0 +1,50 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Sorgen Sie dafür, dass das Fehlerprotokoll unter dem folgenden Pfad liegt:
+
+    /mysql/logs/server_<PORT>.err
+    
+
+Lassen Sie zusätzlich alle Meldungen über den syslog-Daemon protokollieren.
+Als Tag für das Protokoll soll die Port-Nummer verwendet werden.
+
+Tipp:
+
+Schauen Sie sich die Parameter des Dienstes mysqld_safe genauer an.
+
+## Lösung
+# log-error
+Zunächst muss der Parameter log-error in der Konfigurations-Datei angepasst werden.
+[root@vm132 ~]# cat /opt/mysql/my01.cnf | grep log-error
+log-error=/mysql/logs/server_3306.err
+
+Als nächstes muss die Log-Datei ggfs. angelegt und der Owner angepasst werden, bevor der Datenbank-Server neugestartet werden kann
+[root@vm132 ~]# touch /mysql/logs/server_3306.err
+[root@vm132 ~]# chown mysql /mysql/logs/server_3306.err
+[root@vm132 ~]# ./start_mysql1.sh start
+Starting MySQL/opt/mysql/mysql-8.0.11/bin/mysqld_safe --defaults-file=/opt/mysql/my01.cnf --datadir=/mysql/db01 --pid-file=/mysql/db01/vm132.pid  >/dev/null &
+      wait_for_pid created  /mysql/db01/vm132.pid; return_value=0
+.... SUCCESS!
+
+# syslog
+Der mysqld-safe Daemon muss beim Start um --syslog und --syslog-tag=3306 erweitert werden:
+[root@vm132 ~]# cat start_mysql1.sh | grep syslog
+      $bindir/mysqld_safe --defaults-file=/opt/mysql/my01.cnf --datadir="$datadir" --pid-file="$mysqld_pid_file_path" --syslog --syslog-tag=3306 $other_args >/dev/null &
+
+Nun kann das entsprechende syslog überwacht werden:
+[root@vm132 ~]# cat /var/log/messages | grep 3306
+Mar 12 10:49:21 vm132 mysqld_safe-3306: Logging to '/mysql/logs/server_3306.err'.
+Mar 12 10:49:21 vm132 mysqld_safe-3306: Starting mysqld daemon with databases from /mysql/db01
+Mar 12 10:54:02 vm132 mysqld_safe-3306: mysqld from pid file /mysql/db01/vm132.pid ended
+Mar 12 10:54:09 vm132 mysqld_safe-3306: Logging to '/mysql/logs/server_3306.err'.
+Mar 12 10:54:09 vm132 mysqld_safe-3306: Starting mysqld daemon with databases from /mysql/db01
+
+
+bash> cat /etc/my.cnf 
+
+[mysqld]
+...
+log_error=/mysql/logs/mysql_3306.err
+log_error_verbosity=3

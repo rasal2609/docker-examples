@@ -1,0 +1,113 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+## Die VM hat zu wenig Speicher für 3 Sandbox-Instanzen, wenn die anderen beiden Server zu groß sind.
+## Ich überlege mier hier noch ein besseres Szenario..
+
+Fahren Sie zunächst den Slave (zweiter Datenbank-Server, Port 3307) herunter.
+
+Erstellen Sie anschließend zwei weitere Sandbox-Instanzen (Port 3312 und Port 3313) und konfigurieren Sie die beiden Sandbox-Isntanzen so wie die zuvor erstelle Instanz (Port 3311) für die InnoDB-Cluster Nutzung mittels dba.configureInstance();
+ 
+Verbinden Sie sich nun mit dem neuen Master-Server (Port 3311) und erstellen Sie ein Cluster 'ORDIX'.
+
+Fügen Sie die Instanzen anschließend dem Cluster hinzu und lassen Sie sich den Status des Clusters ausgeben.
+Spielen Sie nun ein wenig mit den Cluster-Instanzen rum:
+
+ - Legen Sie auf dem Primary Datensätze an und rufen Sie diese auf den sekundären Instanzen ab
+ - Fahren Sie nacheinander eine Instanz herunter und kontrollieren Sie den Status des Clusters
+ - Fahren Sie anschließend wieder alle Instanzen hoch und kontrollieren Sie nach jeder Instanz den Status des Clusters
+
+
+
+## Lösung
+# Sandbox 3312 und 3313 anlegen
+
+# InnoDB Cluster Konfigurationen auf den Datenbank-Servern
+
+# Sandbox 3311
+ MySQL  localhost:3311 ssl  JS > dba.configureInstance();
+Configuring local MySQL instance listening at port 3311 for use in an InnoDB cluster...
+Instance detected as a sandbox.
+Please note that sandbox instances are only suitable for deploying test clusters for use within the same host.
+
+This instance reports its own address as vm132
+Clients and other cluster members will communicate with it through this address by default. If this is not correct, the report_host MySQL system variable should be changed.
+
+The instance 'localhost:3311' is valid for InnoDB cluster usage.
+ MySQL  localhost:3311 ssl  JS > \connect root@localhost:3306
+Creating a session to 'root@localhost:3306'
+Fetching schema names for autocompletion... Press ^C to stop.
+Closing old connection...
+Your MySQL connection id is 32
+Server version: 8.0.11 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+
+# Master Server 3306
+ MySQL  localhost:3306 ssl  JS > dba.configureInstance();
+ Configuring local MySQL instance listening at port 3306 for use in an InnoDB cluster...
+
+This instance reports its own address as vm132
+Clients and other cluster members will communicate with it through this address by default. If this is not correct, the report_host MySQL system variable should be changed.
+
+WARNING: User 'root' can only connect from localhost.
+If you need to manage this instance while connected from other hosts, new account(s) with the proper source address specification must be created.
+
+1) Create remotely usable account for 'root' with same grants and password
+2) Create a new admin account for InnoDB cluster with minimal required grants
+3) Ignore and continue
+4) Cancel
+
+Please select an option [1]: 1
+Please provide a source address filter for the account (e.g: 192.168.% or % etc) or leave empty and press Enter to cancel.
+Account Host: %
+
+The instance 'localhost:3306' is valid for InnoDB cluster usage.
+
+Cluster admin user 'root'@'%' created.
+
+# Sandbox 3312
+ MySQL  localhost:3312 ssl  JS > dba.configureInstance();
+Configuring local MySQL instance listening at port 3312 for use in an InnoDB cluster...
+Instance detected as a sandbox.
+Please note that sandbox instances are only suitable for deploying test clusters for use within the same host.
+
+This instance reports its own address as vm132
+Clients and other cluster members will communicate with it through this address by default. If this is not correct, the report_host MySQL system variable should be changed.
+
+The instance 'localhost:3312' is valid for InnoDB cluster usage.
+
+
+# Cluster 'ORDIX' anlegen
+ MySQL  172.17.10.232:3306 ssl  JS > cluster = dba.createCluster("ORDIX");
+A new InnoDB cluster will be created on instance 'root@172.17.10.232:3306'.
+
+Validating instance at 172.17.10.232:3306...
+
+This instance reports its own address as vm132
+WARNING: The following tables use a storage engine that are not supported by Group Replication:
+pkw.fahrtenbuch
+
+WARNING: The following tables do not have a Primary Key or equivalent column:
+pkw.fahrtenbuch
+
+Group Replication requires tables to use InnoDB and have a PRIMARY KEY or PRIMARY KEY Equivalent (non-null unique key). Tables that do not follow these requirements will be readable but not updateable when used with Group Replication. If your applications make updates (INSERT, UPDATE or DELETE) to these tables, ensure they use the InnoDB storage engine and have a PRIMARY KEY or PRIMARY KEY Equivalent.
+
+Instance configuration is suitable.
+Creating InnoDB cluster 'ORDIX' on 'root@172.17.10.232:3306'...
+Adding Seed Instance...
+
+Cluster successfully created. Use Cluster.addInstance() to add MySQL instances.
+At least 3 instances are needed for the cluster to be able to withstand up to
+one server failure.
+
+<Cluster:ORDIX>
+
+# Admin-Benutzer auf den Sandbox-Instanzen
+root@(none)>create user 'clusteradmin'@'%' identified by 'admin';
+Query OK, 0 rows affected (0,01 sec)
+
+root@(none)>grant all privileges on *.* to 'clusteradmin'@'%';
+Query OK, 0 rows affected (0,11 sec)
+
+

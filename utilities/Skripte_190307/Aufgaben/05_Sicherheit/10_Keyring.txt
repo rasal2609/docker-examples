@@ -1,0 +1,18 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Greifen Sie mit dem Linux "strings" Kommando auf das Tablespace der Tabelle "customer" zu:
+
+    bash> cd /mysql/db01/sakila
+    bash> strings customer.ibd | head -100
+    
+Wie Sie sehen können, sind die Daten identifizierbar.
+
+Aktivieren Sie die Keyring-Verschlüsselung in der Konfiguration (/etc/my.cnf):
+
+    early-plugin-load=keyring_file.so
+    keyring_file_data=/opt/mysql/keyring
+    
+Verschlüsseln Sie die Tabelle "customer" und versuchen Sie erneut mit dem "strings"-Kommando die Inhalte auszulesen.
+    

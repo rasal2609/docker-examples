@@ -1,0 +1,18 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Erstellen Sie zunächst einen zweiten Datenbank-Server und orientieren Sie sich dazu am bisherigen Datenbank-Server.
+Stellen Sie dabei folgende Konfigurationen sicher:
+
+ - port 3307
+ - socket /tmp/mysql02.sock
+ - data-dir /mysql/db02
+ - log-error /mysql/logs/server_3307.err
+ - log-bin-basename /mysql/logs/bin/3307/server_3307
+ - log-bin-index /mysql/logs/bin/3307/server_3307.index
+ - general-log-file /mysql/logs/server_3307.log
+ - general-log on
+
+Nutzen Sie für die Konfiguration die Konfigurationsdatei /opt/mysql/my02.cnf.
+Kopieren Sie sich zusätzlich das aktuelle Start-Skript und passen Sie es entsprechend für den neuen Datenbank-Server an.

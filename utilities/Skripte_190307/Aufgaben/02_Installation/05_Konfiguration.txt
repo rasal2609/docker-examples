@@ -1,0 +1,17 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Erstellen Sie eine Konfigurationsdatei für Ihren Server.
+Diese sollte zunächst minimal die beiden Gruppen "mysql" und "mysqld" enthalten.
+
+Eine Vorlage finden Sie unter:
+    /home/ordix/Vorlagen/my.cnf
+    
+Ändern Sie für die Gruppen "client" die Einstellungen für den Port und das Socket.
+Können Sie sich weiterhin erfolgreich am Server authentifizieren?
+
+Mit welchen Rechte ist die Konfigurationsdatei ausgestettet?
+Was passiert, wenn Sie die Rechte verändern?
+
+bash> chmod 777 /etc/my.cnf

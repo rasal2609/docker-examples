@@ -1,0 +1,12 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Outfile
+Exportieren Sie zunächst die Inhalte der Tabell sakila.payment in ein Outfile.
+Löschen Sie nun den gesamten Inhalt der Tabelle und Spielen sie den gesamten Inhalt aus dem Outfile wieder ein. (REPLACE)
+Löschen Sie als nächstes nur bestimmte Datensätze der Tabelle sakila.payment und spielen Sie auch nur diese Datensätze wieder ein. (IGNORE)
+
+mysqldump
+Erstellen Sie ein vollständiges Backup der Datenbank sakila mit dem Tool mysqldump. Stellen Sie dabei sicher, dass auch der CREATE DATABASE Befehl exportiert wird.
+Löschen Sie die Datenbank im Anschluss und Spielen Sie das gesamte Backup wieder ein.

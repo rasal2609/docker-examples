@@ -1,0 +1,7 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Installieren Sie das Plugin CONNECTION_CONTROL und führen Sie anschließend das Skript
+/home/ordix/Skripte/05_Sicherheit/login_control.sh 
+aus.

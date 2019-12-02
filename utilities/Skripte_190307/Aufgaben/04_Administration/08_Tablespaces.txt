@@ -1,0 +1,46 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+
+Erstellen Sie eine neue Datenbank "reports". In dieser sollen große Datenbestände für Leseoperationen (Full Table Scans) gespeichert werden.
+Legen Sie für diese Datenbank (und alle darin später befindlichen Tabellen) ein (!) eigenes Tablespace "reports.ibd" an.
+Dieses soll im Verzeichnis /mysql/bigdata liegen.
+
+Legen Sie eine Tabelle "rent_information" basieren auf dem folgenden SELECT an:
+
+select * from film f 
+	left join film_actor fa on f.film_id = fa.film_id
+    left join actor a on fa.actor_id = a.actor_id
+    left join inventory i on f.film_id = i.film_id
+    left join rental r on i.inventory_id = r.inventory_id
+    left join customer c on r.customer_id = c.customer_id;
+
+Wie groß ist das Tablespace "reports.idb" nach dem Erstellen der Tabelle.
+
+####
+
+Lassen Sie sich die Informationen zu den zuvor erstellten Tabellen "marke" und "modell" Informationen zu den Tablespaces ausgeben.
+Erstellen Sie anschließend ein neues Tablespace 'pkw_new' und fügen Sie dieses der Tabelle "marke" hinzu. Vergleichen Sie die Abfrage erneut.
+
+Fügen Sie anschließend folgende Datensätze ein:
+
+insert into marke(markenname) values('Opel');
+insert into marke(markenname) values('Tesla');
+insert into marke(markenname) values('Ford');
+
+insert into modell(modellname, markennr) values('Adam', 1);
+insert into modell(modellname, markennr) values('Model S', 2);
+insert into modell(modellname, markennr) values('Fiesta', 3);
+
+Legen Sie nun eine Kopie der Tabelle 'marke' als 'marke_copy' an und transportieren Sie das Tablespace von 'marke' zu 'marke_copy'.
+Zur Erinnerung:
+
+ 1) Tablespace der Zieltabelle entfernen
+ 2) Quelltabelle für den Export vorbereiten
+ 3) Tablespace kopieren
+ 4) Quelltabelle freigeben
+ 5) Zieltabelle sperren und laden
+ 6) Zieltabelle freigeben
+
+

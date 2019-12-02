@@ -1,0 +1,24 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Aktivieren Sie das General- und Slow-Log.
+Setzen Sie dabei die folgenden Einstellungen um.
+
+- die Dateien liegen ebenfalls unter /mysql/logs/server_<PORT>.(slow|log)
+- sorgen Sie dafür das Statements die länger als 0,5 Sekunden laufen geloggt werrden
+
+Stellen Sie das Logging um. Die Informationen sollen in die MySQL Datenbank geschrieben werden.
+
+Testen Sie die Einstellungen:
+- aktivieren / deaktivieren Sie die Logfiles im laufenden Betrieb (set global .....)
+- Ändern Sie den Wert für langlaufende Statements in Ihrer Session (set local ....)
+
+
+Tipp:
+Das bilden von kartesischen Produkten (mehrere Tabellen ohne JOIN-Kriterium) führt
+schnell zu langen Laufzeiten:
+
+    
+    mysql> use mysql
+    mysql> select * from user a, user b, user c, ...

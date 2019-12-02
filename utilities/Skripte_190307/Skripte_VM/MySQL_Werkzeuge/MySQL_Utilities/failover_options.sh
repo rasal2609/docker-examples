@@ -1,0 +1,1 @@
+/usr/local/bin/mysqlfailover   --master=multi:multi@localhost:3308 --discover-slaves-login=multi:multi --exec-before=/home/mysql/mysql_utilities/msg.sh --log=/home/mysql/mysql_utilities/console.log --failover-mode=auto --force --interval=5

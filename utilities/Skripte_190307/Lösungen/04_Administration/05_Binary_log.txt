@@ -1,0 +1,66 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Aktivieren Sie das Binary Logging mit den folgenden Einstellungen
+
+    - Binary Logs liegen unter /mysql/logs/bin/<PORT>/server_<PORT>
+    - die Logfiles sollen eine Größe von 10 MB haben
+    - Binary Logs älter als 3 Tage sollen automatisch gelöscht werden
+    
+Schauen Sie ich mit dem folgenden Kommando an, welche Binary Logs geschrieben wurden:
+
+    mysql> show master logs;
+    
+Erzwingen Sie einen Log-Switch über das folgende Kommando:
+
+    mysql> flush binary logs;
+
+## Lösung
+# Binary Logs
+Zunächst muss das Verzeichnis für die Binary Logs angelegt werden. Ggfs. muss auch hier wieder ein chown für den Benutzer mysql ausgeführt werden
+[root@vm132 db01]# mkdir /mysql/logs/bin
+[root@vm132 db01]# chown mysql /mysql/logs/bin
+[root@vm132 db01]# mkdir /mysql/logs/bin/3306
+[root@vm132 db01]# chown mysql /mysql/logs/bin/3306/
+
+Zusätzlich muss die Konfigurations-Datei des DB-Servers um folgende Einträge unter mysqld erweitert werden:
+log-bin=/mysql/logs/bin/3306/server_3306
+max-binlog-size=10737418
+expire-logs-days=3
+
+
+...oder...
+root@(none)>set persist max_binlog_size=10*1024*1024;
+Query OK, 0 rows affected (0,00 sec)
+
+root@(none)>set persist expire_logs_days=3;
+ERROR 3683 (HY000): The option expire_logs_days and binlog_expire_logs_seconds cannot be used together. Please use binlog_expire_logs_seconds to set the expire time (expire_logs_days is deprecated)
+root@(none)>set persist binlog_expire_logs_seconds=3*24*60*60;
+Query OK, 0 rows affected (0,00 sec)
+
+!!! Der Parameter expire-logs-days ist veraltet !!!
+
+root@(none)>show master logs;
++--------------------+-----------+
+| Log_name           | File_size |
++--------------------+-----------+
+| server_3306.000001 |       170 |
+| server_3306.000002 |       151 |
++--------------------+-----------+
+2 rows in set (0,00 sec)
+
+root@(none)>flush binary logs;
+Query OK, 0 rows affected (0,01 sec)
+
+root@(none)>show master logs;
++--------------------+-----------+
+| Log_name           | File_size |
++--------------------+-----------+
+| server_3306.000001 |       170 |
+| server_3306.000002 |       196 |
+| server_3306.000003 |       151 |
++--------------------+-----------+
+3 rows in set (0,00 sec)
+
+root@(none)>

@@ -1,0 +1,86 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+
+Erstellen Sie einen neuen DB-Server. Nutzten die bitte die Version 8.0.11.
+Sorgen Sie dafür, dass die Datenbank-Dateien unterhalb der folgenden Verzeichnisses liegen:
+
+/mysql/db01
+
+Schauen Sie sich die Parameter des Dienstes "mysqld" genau an.
+Hilfreich sollten die folgenden Optionen sein:
+
+- --initialize
+- --datadir
+- --user
+
+Starten Sie den Server. Denken Sie daran, dass Sie das root-Passwort nach dem ersten Login ändern müssen.
+Das initiale root-Passwort finden Sie in der Standard-Ausgabe oder im Error-Log des Servers. Dieses liegt im 
+Datenbankverzeichnis und endet auf "*.err".
+
+Mit dem folgenden Kommando können Sie nach einem erfolgreichen Login das root-Passwort auf einen leeren String setzen:
+
+mysql> alter user 'root'@'localhost' identified by '';
+
+## Lösungen
+
+# Erstellen des DB-Servers
+[root@vm132 ~]# mysqld --initialize --user=mysql --datadir=/mysql/db01
+2019-03-11T13:32:31.092469Z 0 [System] [MY-013169] [Server] mysqld (mysqld 8.0.11) initializing of server in progress as process 4612
+2019-03-11T13:32:31.092517Z 0 [ERROR] [MY-010338] [Server] Can't find error-message file '/share/errmsg.sys'. Check error-message file location and 'lc-messages-dir' configuration directive.
+2019-03-11T13:32:33.831639Z 5 [Note] [MY-010454] [Server] A temporary password is generated for root@localhost: njii,/aP3%Pp
+2019-03-11T13:32:35.310089Z 0 [System] [MY-013170] [Server] mysqld (mysqld 8.0.11) initializing of server has completed
+
+# Starten des DB-Servers via mysqld
+[root@vm132 ~]# mysqld --user=mysql --datadir=/mysql/db01 &
+[1] 10734
+[root@vm132 ~]# 2019-03-11T15:42:25.883368Z 0 [System] [MY-010116] [Server] mysqld (mysqld 8.0.11) starting as process 10734
+2019-03-11T15:42:25.883437Z 0 [ERROR] [MY-010338] [Server] Can't find error-message file '/share/errmsg.sys'. Check error-message file location and 'lc-messages-dir' configuration directive.
+2019-03-11T15:42:27.182637Z 0 [Warning] [MY-010068] [Server] CA certificate ca.pem is self signed.
+2019-03-11T15:42:27.357224Z 0 [System] [MY-010931] [Server] mysqld: ready for connections. Version: '8.0.11'  socket: '/tmp/mysql.sock'  port: 3306  MySQL Community Server - GPL.
+[root@vm132 ~]# kill 9 10734
+
+# Starten des DB-Servers via mysqld_safe
+[root@vm132 ~]# mysqld_safe --user=mysql --datadir=/mysql/db01 &
+[1] 10787
+[root@vm132 ~]# 2019-03-11T15:43:02.584986Z mysqld_safe Logging to '/mysql/db01/vm132.err'.
+2019-03-11T15:43:02.618710Z mysqld_safe Starting mysqld daemon with databases from /mysql/db01
+
+# Erste Anmeldung und Änderung des Root-Passwortes
+[root@vm132 ~]# mysql -uroot -p
+Enter password:
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 9
+Server version: 8.0.11
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+root@(none)>alter user 'root'@'localhost' identified by '';
+Query OK, 0 rows affected (0,08 sec)
+
+root@(none)>exit
+Bye
+
+[root@vm132 ~]# mysql -uroot
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 10
+Server version: 8.0.11 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+root@(none)>exit
+Bye
+[root@vm132 ~]#

@@ -1,0 +1,22 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Entwicklen Sie ein Skript um die folgenden Logdateien zu archivieren:
+- Error-Log
+- Slow-Log (sofern es in Dateien geschrieben wird)
+- General-Log (sofern es in Dateien geschrieben wird)
+
+Denken Sie daran, dass der Server nach dem Verschieben / Umbenennen von Dateien
+den Kanal in die Logdatei einmal neu aufbauen muss (schließen und öffnen).
+
+Schauen Sie sich dazu die folgende Hilfe an:
+
+    mysql> help flush logs
+
+
+Ggfs. ist das folgende SELECT Statement hilfreich bei der Lösung:
+
+    select variable_name
+        from performance_schema.global_variables
+            where regexp_like(variable_name, '([slow_query|general]_log_file)|log_error$');

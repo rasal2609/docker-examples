@@ -1,0 +1,47 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Um die Zugriffe auf den Datenbank-Server einzuschränken, können spezielle Account Ressourcen limitiert werden.
+Limitieren Sie folgende Ressourcen für ihren persönlichen Benutzer und testen Sie sie. Setzen Sie die Limits anschließend wieder zurück (auf 0).
+
+- MAX_CONNECTIONS_PER_HOUR 4
+- MAX_QUERIES_PER_HOUR 5
+- MAX_UPDATES_PER_HOUR 1
+- MAX_USER_CONNECTIONS 1
+
+## Lösung
+# MAX_CONNECTIONS_PER_HOUR
+root@(none)>alter user 'ras'@'%' with MAX_CONNECTIONS_PER_HOUR 4;
+Query OK, 0 rows affected (0,10 sec)
+
+[root@vm132 ~]# mysql -uras -pOrdix0800999!
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1226 (42000): User 'ras' has exceeded the 'max_connections_per_hour' resource (current value: 4)
+
+# MAX_QUERIES_PER_HOUR
+root@(none)>alter user 'ras'@'%' with MAX_QUERIES_PER_HOUR 5;
+Query OK, 0 rows affected (0,03 sec)
+
+ras@(none)>select count(*) from mysql.user;
+ERROR 1226 (42000): User 'ras' has exceeded the 'max_questions' resource (current value: 5)
+
+# MAX_UPDATES_PER_HOUR
+root@(none)>alter user 'ras'@'%' with MAX_UPDATES_PER_HOUR 1;
+Query OK, 0 rows affected (0,06 sec)
+
+ras@(none)>update pkw.modell set modellname = 'Focus' where modellnr = 3;
+Query OK, 1 row affected (0,11 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+ras@(none)>update pkw.modell set modellname = 'Fiesta' where modellnr = 3;
+ERROR 1226 (42000): User 'ras' has exceeded the 'max_updates' resource (current value: 1)
+
+# MAX_USER_CONNECTIONS
+root@(none)>alter user 'ras'@'%' with MAX_USER_CONNECTIONS 1;
+Query OK, 0 rows affected (0,05 sec)
+
+[root@vm132 ~]# mysql -uras -pOrdix0800999!
+mysql: [Warning] Using a password on the command line interface can be insecure.
+ERROR 1226 (42000): User 'ras' has exceeded the 'max_user_connections' resource (current value: 1)
+
