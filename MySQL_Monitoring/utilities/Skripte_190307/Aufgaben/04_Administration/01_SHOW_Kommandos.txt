@@ -1,0 +1,25 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Gewinnen Sie einen Überblick, welche SHOW--Kommandos existieren:
+Nutzten Sie im MySQL Client die entsprechende Hilfe.
+
+    mysql> help contents
+    
+Lassen Sie sich im "information_schema" alle Tabellen anzeigen, die etwas mit dem Begriff
+"innodb" zutun haben.
+
+Lassen Sie sich das Kommando zum Anlegen der Tabelle "mysql.user" ausgeben.
+Können Sie dieses in einer Textdatei schreiben lassen?
+
+Lassen Sie sich alle aktiven Sessions (Prozesse!) anzeigen.
+
+Auf welchem Wert steht die Server-Variable "wait_timeout"?
+Auf welchem Wert steht diese Variable in Ihrer Session?
+
+Versuchen Sie rauszufinden wie die Engine InnoDB konfiguriert wurde.
+
+Versuchen Sie die Anzahl der abgesetzten SELECT-Kommandos zu bestimmen:
+    - gegen den Server (summiert)
+    - in Ihrer Session

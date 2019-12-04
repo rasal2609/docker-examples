@@ -1,0 +1,13 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Um die Zugriffe auf den Datenbank-Server einzuschränken, können spezielle Account Ressourcen limitiert werden.
+Limitieren Sie folgende Ressourcen für ihren persönlichen Benutzer und testen Sie sie:
+
+- MAX_CONNECTIONS_PER_HOUR = 4
+- MAX_QUERIES_PER_HOUR = 5
+- MAX_UPDATES_PER_HOUR = 1
+- MAX_USER_CONNECTIONS = 1
+
+

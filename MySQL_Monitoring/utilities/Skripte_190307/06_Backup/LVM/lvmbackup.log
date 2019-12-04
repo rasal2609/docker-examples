@@ -1,0 +1,7 @@
+  Logical volume "Backup_20180816_093633" created.
+*************************** 1. row ***************************
+             File: localhost-bin.000001
+         Position: 380
+     Binlog_Do_DB: 
+ Binlog_Ignore_DB: 
+Executed_Gtid_Set: 

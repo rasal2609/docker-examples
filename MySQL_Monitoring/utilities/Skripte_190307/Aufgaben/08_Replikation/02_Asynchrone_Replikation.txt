@@ -1,0 +1,26 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Bereiten Sie den neuen Datenbank-Server (fortan Slave genannt) für eine asynchrone Replikation vor.
+Stellen Sie dafür folgendes Sicher:
+
+Master:
+  - Replikationsbenutzer erstellen
+  - Binary-Log aktivieren
+  - Server ID in der Konfigurations-Datei setzen
+  - SYNC-BINLOG aktivieren (=1)
+
+Slave: 
+  - Server ID in der Konfigurations-Datei setzen
+  - Relay-Log auf Relay-Log des Masters setzen
+  - Importieren Sie ein Backup des Masters auf dem Slave
+
+Starten Sie nun die asynchrone Replikation über den "change master"-Befehl, starten Sie den Slave und schauen Sie sich den Status an.
+Führen Sie anschließend Transkationen (z.B. durch das Transaktions-Skript) auf dem Master durch und prüfen Sie die Änderungen auf dem Slave.
+
+Untersuchen Sie parallel dazu den Slave Status und identifizieren Sie die relevanten Informationen für die Replikation der Transaktionen.
+
+Stellen Sie ein SQL-Delay von 30 Sekunden auf dem Slave ein und testen Sie das Delay mittels eines 'create database'-Befehls. (Befehl: change master to master_delay=30)
+
+

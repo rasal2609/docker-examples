@@ -1,0 +1,17 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Aktivieren Sie das Binary Logging mit den folgenden Einstellungen
+
+    - Binary Logs liegen unter /mysql/logs/bin/<PORT>/server_<PORT>
+    - die Logfiles sollen eine Größe von 10 MB haben
+    - Binary Logs älter als 3 Tage sollen automatisch gelöscht werden
+    
+Schauen Sie ich mit dem folgenden Kommando an, welche Binary Logs geschrieben wurden:
+
+    mysql> show master logs;
+    
+Erzwingen Sie einen Log-Switch über das folgende Kommando:
+
+    mysql> flush binary logs;

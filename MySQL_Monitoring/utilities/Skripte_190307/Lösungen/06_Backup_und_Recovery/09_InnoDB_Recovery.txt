@@ -1,0 +1,48 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+
+#Checken des primären Tablespaces
+
+    ./stream_parser -f /mysql/db01/ibdata1 
+    Opening file: /mysql/db01/ibdata1
+    File information:
+    
+    ID of device containing file:        64774
+    inode number:                           76
+    protection:                         100640 (regular file)
+    number of hard links:                    1
+    user ID of owner:                       27
+    group ID of owner:                      27
+    device ID (if special file):             0
+    blocksize for filesystem I/O:         4096
+    number of blocks allocated:          24576
+    time of last access:            1553240099 Fri Mar 22 08:34:59 2019
+    time of last modification:      1553240101 Fri Mar 22 08:35:01 2019
+    time of last status change:     1553240101 Fri Mar 22 08:35:01 2019
+    total size, in bytes:             12582912 (12.000 MiB)
+    
+    Size to process:                  12582912 (12.000 MiB)
+    All workers finished in 0 sec
+
+
+# Tabelle actor parsen
+    ./stream_parser -f /mysql/db01/sakila/actor.ibd
+
+# SQL der Tabelle bauen
+    z.b (mysql> show createw table actor)
+    mysqldump --no-data -N --add-drop-table=FALSE --set-charset=FALSE sakila actor | grep -v '^[-/]' > actor.sql (set Anweissung löschen)
+
+# Daten auslesen
+        ./c_parser -6f pages-actor.ibd/FIL_PAGE_INDEX/0000000000000136.page -t actor.sql
+        ...
+        000000002F3E	80000000000000	actor	192	"JOHN"	"SUVARI"	"2006-02-15 04:34:33"
+        000000002F3E	80000000000000	actor	193	"BURT"	"TEMPLE"	"2006-02-15 04:34:33"
+        000000002F3E	80000000000000	actor	194	"MERYL"	"ALLEN"	"2006-02-15 04:34:33"
+        000000002F3E	80000000000000	actor	195	"JAYNE"	"SILVERSTONE"	"2006-02-15 04:34:33"
+        000000002F3E	80000000000000	actor	196	"BELA"	"WALKEN"	"2006-02-15 04:34:33"
+        000000002F3E	80000000000000	actor	197	"REESE"	"WEST"	"2006-02-15 04:34:33"
+        000000002F3E	80000000000000	actor	198	"MARY"	"KEITEL"	"2006-02-15 04:34:33"
+        000000002F3E	80000000000000	actor	199	"JULIA"	"FAWCETT"	"2006-02-15 04:34:33"
+        000000002F3E	80000000000000	actor	200	"THORA"	"TEMPLE"	"2006-02-15 04:34:33"

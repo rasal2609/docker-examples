@@ -1,0 +1,13 @@
+##
+## 14.11.2019 - Raphael Salguero - ORDIX AG
+##
+## To-Do Liste für umfrangreiches MySQL Docker Bundle
+## Monitoring und Performance-Tests
+## Inklusive Betrieb von InnoDB Cluster
+## DR-fähig!
+##
+
+[ ] grafana-Benutzer in MySQL Datenbank erstellen
+[ ] MySQL Exporter einbinden
+[ ] Eigene MySQL Metriken einbinden 
+[ ] DR-Fähigkeit implementieren 

@@ -1,0 +1,22 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Nutzen Sie das mitgelieferte Start- und Stopp-Skript, um den Server zu kontrollieren.
+Sie finden dieses unterhalb des Software-Verzeichnis der genutzten Version:
+
+    /opt/mysql/mysql-8.0.11/support-files
+
+Das Skript "mysql.server" sollte in den Ordner "/etc/init.d" kopiert werden und für 
+den OS-USer root ausführbar sein.
+
+Testen Sie das Skript, indem Sie den Server starten und stoppen.
+
+Analysieren Sie das Skript und versuchen Sie die Zeile zu finden, die letztendlich 
+den Server startet. 
+
+Welche Variablen gibt es im Skript, die geändert werden können?
+
+
+# Zusatzinfo zum Thema Dienste
+# /home/ordix/Skripte/02_Installation/systemctl.txt

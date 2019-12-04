@@ -1,0 +1,22 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+- Lassen Sie sich den Ausführungsplan für folgendes Statement ausgeben und interpretieren Sie die Ausgabe (sakila Datenbank):
+
+	select first_name
+	     , last_name
+	     , title 
+	  from actor a
+	     , film f
+	     , film_actor fa
+	 where a.actor_id = fa.actor_id
+	   and fa.film_id = f.film_id;
+
+  Deaktivieren Sie nun alle Keys für die Tabelle film_actor und wiederholen Sie die Abfrage. Was hat das Deaktivieren der Keys für Auswirkungen?
+  Hilfe für den Befehl zum Deaktivieren der Keys erhalten Sie über das Kommando 'help alter table'.
+
+- Für die Tabelle actor existiert ein Index auf die Spalte LAST_NAME (show create table actor).
+  Selektieren Sie sich zunächst Informationen über die Größe des Indizes aus dem Schema information_schema und verkürzen Sie den Index anschließend, sodass Sie trotzdem noch eine Kardinalität von > 90% vorweisen können.
+
+

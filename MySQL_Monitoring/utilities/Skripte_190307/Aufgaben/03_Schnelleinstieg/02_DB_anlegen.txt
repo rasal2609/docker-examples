@@ -1,0 +1,18 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+Erstellen Sie sich eine neue DB mit dem Namen "TEST".
+
+	mysql> create database TEST;
+
+Erzeugen Sie zusätzlich eine DB mit dem Namen "Test"
+
+	mysql> create database Test;
+
+Warum ist dies möglich?
+Wo sehen Sie hier Probleme?
+Gibt es eine Möglichkeit dieses MySQL Verhalten zu ändern?
+
+Tipp:
+
+	bash> mysqld --verbose --help

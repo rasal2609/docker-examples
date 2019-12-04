@@ -1,0 +1,134 @@
+version: '3.7'
+services:
+  prometheus:
+    image: prom/prometheus
+    user: "1000"
+    container_name: prometheus
+    hostname: prometheus
+    ports:
+    - "9090:9090"
+    volumes:
+    - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    - ./prometheus/data/:/prometheus/data/
+    command:
+    - '--config.file=/etc/prometheus/prometheus.yml'
+    networks:
+      testing_net:
+        ipv4_address: 172.50.1.2
+
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    hostname: grafana
+    user: "501"
+    ports:
+    - "3000:3000"
+    volumes:
+    - ./grafana/data/:/var/lib/grafana/
+    - ./grafana/grafana.ini:/etc/grafana/grafana.ini
+    - ./grafana/provisioning/:/etc/grafana/provisioning/
+    #- ./grafana/ldap.toml:/etc/grafana/ldap.toml
+    depends_on:
+    - mysql1
+    - prometheus
+    networks:
+      testing_net:
+        ipv4_address: 172.50.1.3
+    restart: always
+
+  mysql1:
+    container_name: mysql1
+    env_file:
+      - src/mysql-server.env
+    image: mysql/mysql-server:8.0.15
+    volumes:
+      - ./scripts/db.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - ./utilities:/utilities
+    ports:
+      - "3301:3306"
+      - "33061:33060"
+    command: ["mysqld","--server_id=1","--binlog_checksum=NONE","--gtid_mode=ON","--enforce_gtid_consistency=ON","--log_bin","--log_slave_updates=ON","--master_info_repository=TABLE","--relay_log_info_repository=TABLE","--transaction_write_set_extraction=XXHASH64","--user=mysql","--skip-host-cache","--skip-name-resolve", "--default_authentication_plugin=mysql_native_password", "--expire-logs-days=5"]
+    networks:
+      testing_net:
+        ipv4_address: 172.50.1.4
+
+  mysql2:
+    container_name: mysql2
+    env_file:
+      - src/mysql-server.env
+    image: mysql/mysql-server:8.0.15
+    volumes:
+      - ./scripts/db.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - ./utilities:/utilities
+    ports:
+      - "3302:3306"
+      - "33062:33060"
+    command: ["mysqld","--server_id=1","--binlog_checksum=NONE","--gtid_mode=ON","--enforce_gtid_consistency=ON","--log_bin","--log_slave_updates=ON","--master_info_repository=TABLE","--relay_log_info_repository=TABLE","--transaction_write_set_extraction=XXHASH64","--user=mysql","--skip-host-cache","--skip-name-resolve", "--default_authentication_plugin=mysql_native_password", "--expire-logs-days=5"]
+    networks:
+      testing_net:
+        ipv4_address: 172.50.1.5
+
+  mysql3:
+    container_name: mysql3
+    env_file:
+      - src/mysql-server.env
+    image: mysql/mysql-server:8.0.15
+    volumes:
+      - ./scripts/db.sql:/docker-entrypoint-initdb.d/init.sql:ro
+      - ./utilities:/utilities
+    ports:
+      - "3303:3306"
+      - "33063:33060"
+    command: ["mysqld","--server_id=1","--binlog_checksum=NONE","--gtid_mode=ON","--enforce_gtid_consistency=ON","--log_bin","--log_slave_updates=ON","--master_info_repository=TABLE","--relay_log_info_repository=TABLE","--transaction_write_set_extraction=XXHASH64","--user=mysql","--skip-host-cache","--skip-name-resolve", "--default_authentication_plugin=mysql_native_password", "--expire-logs-days=5"]
+    networks:
+      testing_net:
+        ipv4_address: 172.50.1.6
+
+  #exporter für datenbank "master" (172.50.1.4:3306)
+  mysql_exp:
+    image: prom/mysqld-exporter
+    environment:
+    - DATA_SOURCE_NAME=exporter:exporter@(172.50.1.4:3306)/
+    ports:
+    - "9104:9104" 
+    depends_on:
+    - mysql1
+    - grafana
+    networks:
+      testing_net:
+        ipv4_address: 172.50.1.7
+
+  #exporter für datenbank2 "slave" (172.50.1.5:3306)
+  mysql_exp2:
+    image: prom/mysqld-exporter
+    environment:
+    - DATA_SOURCE_NAME=exporter:exporter@(172.50.1.5:3306)/
+    ports:
+    - "9105:9104"
+    depends_on:
+    - mysql2
+    - grafana
+    networks:
+      testing_net:
+        ipv4_address: 172.50.1.8
+  
+  #exporter für datenbank3 "slave" (172.50.1.6:3306)
+  mysql_exp3:
+    image: prom/mysqld-exporter
+    environment:
+    - DATA_SOURCE_NAME=exporter:exporter@(172.50.1.6:3306)/
+    ports:
+    - "9106:9104"
+    depends_on:
+    - mysql3
+    - grafana
+    networks:
+      testing_net:
+        ipv4_address: 172.50.1.9
+networks:
+  testing_net:
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.50.0.0/16
+

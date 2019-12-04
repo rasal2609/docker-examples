@@ -1,0 +1,7 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Setzen Sie das Verzeichnis für die Sandbox-Instanzen der MySQL-Shell auf /opt/mysql/box. ( MySQL  JS > \option sandboxDir=/opt/mysql/box )
+Erstellen Sie nun über die MySQL-Shell eine Sandbox-Instanz mit dem Port 3311. 
+Verbinden Sie sich mit dieser Instanz und importieren Sie auch hier die sakila-Datenbank (wechsel in SQL-Modus miz \sql).

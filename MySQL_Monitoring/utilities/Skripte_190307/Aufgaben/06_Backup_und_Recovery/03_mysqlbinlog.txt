@@ -1,0 +1,12 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Fügen Sie Datensätze zur Tabelle sakila.rental hinzu und suchen Sie im entsprechenden Binary-Log nach diesen Transaktionen. (Hinweis: mysqlbinlog --verbose)
+Untersuchen Sie nun den mysqldump Client nach einer Möglichkeit, die zuvor getätigten Transaktionen in ein SQL-File ausgeben zu lassen.
+
+Führen Sie nun das Skript unter /home/ordix/Skripte/06_Backup/transaktionen.sh aus. 
+ - Was passiert durch die Ausführung des Skriptes?
+ - Wo ist der Unterschied zu den manuellen Transaktionen zuvor?
+
+Suchen Sie nun erneut den Startpunkt der Transaktionen aus dem Skript und lassen Sie sich via mysqldump das SQL-File für diese Transaktionen ausgeben. (Hinweis: Transaktionen liegen in mehreren Binary-Logs)

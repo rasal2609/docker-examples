@@ -1,0 +1,54 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Erstellen Sie in der Datenbank pkw eine Tabelle "fahrtenbuch" als CSV-Engine mit folgenden Spalten:
+ - "start_km" int not null
+ - "end_km" int not null
+ - "grund" varchar not null
+
+ Fügen Sie anschließend einen Datensatz via Insert-Statement und einen Datensatz mit Betriebssystemmitteln hinzu.
+ Welcher Schritt ist hier zusätzlich notwendig?
+
+## Lösung
+# Tabelle "fahrtenbuch"
+create table fahrtenbuch(
+  start_km int not null,
+  end_km int not null,
+  grund varchar(200) not null) engine=csv;
+
+# Datensatz via Insert-Statement
+root@pkw>insert into fahrtenbuch values (0,2,'Abholung');
+Query OK, 1 row affected (0,00 sec)
+
+root@pkw>select * from fahrtenbuch \G
+*************************** 1. row ***************************
+start_km: 0
+  end_km: 2
+   grund: Abholung
+1 row in set (0,00 sec)
+
+# Datensatz via Betriebssystemmittel
+[root@vm132 pkw]# echo "2,4,\"kurzer Test\"" >> fahrtenbuch.CSV
+
+root@pkw>select * from fahrtenbuch \G
+*************************** 1. row ***************************
+start_km: 0
+  end_km: 2
+   grund: Abholung
+1 row in set (0,00 sec)
+
+root@pkw>flush table fahrtenbuch
+    -> ;
+Query OK, 0 rows affected (0,00 sec)
+
+root@pkw>select * from fahrtenbuch \G
+*************************** 1. row ***************************
+start_km: 0
+  end_km: 2
+   grund: Abholung
+*************************** 2. row ***************************
+start_km: 2
+  end_km: 4
+   grund: kurzer Test
+2 rows in set (0,00 sec)

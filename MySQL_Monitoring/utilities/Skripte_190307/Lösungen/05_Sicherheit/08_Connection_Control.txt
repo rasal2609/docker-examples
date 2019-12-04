@@ -1,0 +1,23 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Installieren Sie das Plugin CONNECTION_CONTROL und führen Sie anschließend das Skript
+/home/ordix/Skripte/05_Sicherheit/login_control.sh 
+aus.
+
+
+root@(none)>install plugin connection_control soname 'connection_control.so';
+Query OK, 0 rows affected (0,41 sec)
+
+root@(none)>show variables like '%connection_control%';
++-------------------------------------------------+------------+
+| Variable_name                                   | Value      |
++-------------------------------------------------+------------+
+| connection_control_failed_connections_threshold | 3          |
+| connection_control_max_connection_delay         | 2147483647 |
+| connection_control_min_connection_delay         | 1000       |
++-------------------------------------------------+------------+
+3 rows in set (0,01 sec)
+
+[root@vm132 ~]# bash /home/ordix/Skripte/05_Sicherheit/login_control.sh

@@ -1,0 +1,8 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Erweitern Sie nun die asynchrone Replikation zu einer semisynchronen Replikation, bei der Transaktionen auf dem Slave erst nach einem Commit auf dem Master eingespielt werden.
+Installieren Sie hierfür zunächst das notwendige Plugin aus dem Plugin-Verzeichnis auf Master und Slave.
+Aktivieren Sie anschließend die semisynchrone Replikation und definieren Sie einen Timeout (Abfrage des Status mit SHOW STATUS LIKE 'Repl_semi_sync%').
+Versuchen Sie nun den Wechsel zu einer asynchronen Replikation zu erzwingen. 

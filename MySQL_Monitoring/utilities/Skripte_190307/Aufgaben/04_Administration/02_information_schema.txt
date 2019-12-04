@@ -1,0 +1,10 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Lassen Sie sich alle Tabellen der Datenbank MySQL anzeigen.
+Nutzen Sie dazu ein SQL Statement (SELECT) innerhalb der "information_schema"-Datenbank.
+
+Bestimmen Sie die Anzahl der Tabellen in den Datenbanken.
+Bestimmen Sie die Größe der Daten und Indexbereiche nach Datenbanken.
+Bestimmen Sie die Verwendung der Engines (hinsichtlich des Datenvolumens; z.B. in MB).

@@ -1,0 +1,23 @@
+# group replication pre-requisites & recommendations
+log-bin
+binlog-format = ROW
+gtid-mode = ON
+enforce-gtid-consistency = ON
+log-slave-updates = ON
+master-info-repository = TABLE
+relay-log-info-repository = TABLE
+binlog-checksum = NONE
+#
+# prevent use of non-transactional storage engines
+disabled_storage_engines="MyISAM,BLACKHOLE,FEDERATED,ARCHIVE"
+transaction-isolation = 'READ-COMMITTED'
+ 
+# group replication specific options
+plugin-load = group_replication.so
+group_replication = FORCE_PLUS_PERMANENT
+transaction-write-set-extraction = XXHASH64
+group_replication_start_on_boot = ON
+group_replication_bootstrap_group = OFF
+group_replication_group_name = 550fa9ee-a1f8-4b6d-9bfe-c03c12cd1c72
+group_replication_local_address = 'localhost:6606'
+group_replication_group_seeds = 'localhost:6606, localhost:6607,localhost:6608'

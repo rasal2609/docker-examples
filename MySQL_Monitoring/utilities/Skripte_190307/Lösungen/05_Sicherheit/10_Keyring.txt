@@ -1,0 +1,9 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+early-plugin-load=keyring_file.so
+keyring_file_data=/opt/mysql/keyring
+
+
+alter table test encryption='Y';

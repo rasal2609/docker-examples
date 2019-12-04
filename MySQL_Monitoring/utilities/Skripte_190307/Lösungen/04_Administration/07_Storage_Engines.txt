@@ -1,0 +1,97 @@
+#
+# Matthias Jung, Raphael Salguero / ORDIX AG
+#
+
+Ermitteln Sie aus dem "information_schema" welche Storage-Engines genutzt werden:
+
+- Anzahl Tabellen je Engine
+- MB je genutzter Engine
+
+Erstellen Sie eine neue Datenbank "pkw" mit dem folgenden einfachen Datennmodell:
+
+- Tabelle "marke"
+    - markennr int primary key auto_increment,
+    - markenname varchar
+    
+- Tabelle "modell"
+    - modellnr int primary key auto_increment,
+    - modellname varchar not null,
+    - markennr foreign key references marke(markennr)
+    
+In welcher Engine wurden die Tabellen erzeugt?
+Können Sie die Tabellen in die Engine MyISAM konvertieren?
+
+Untersuchen Sie ihr Datenbank-Verzeichnis. Können Sie die Tabellen im Verzeichnis wiedererkennen?
+
+## Lösung
+# Anzahl der Tabellen je Engine und entsprechender Größe in MB
+root@(none)>select engine, count(*), sum(DATA_LENGTH)/1024/1024 from information_schema.tables group by engine;
++--------------------+----------+----------------------------+
+| ENGINE             | count(*) | sum(DATA_LENGTH)/1024/1024 |
++--------------------+----------+----------------------------+
+| NULL               |      169 |                 0.00000000 |
+| InnoDB             |       48 |                 6.34375000 |
+| CSV                |        2 |                 0.00000000 |
+| PERFORMANCE_SCHEMA |      102 |                 0.00000000 |
++--------------------+----------+----------------------------+
+
+# pkw Datenbank
+root@(none)>create database pkw;
+Query OK, 1 row affected (0,02 sec)
+
+root@(none)>use pkw
+Database changed
+
+create table marke (
+  markennr int primary key auto_increment,
+  markenname varchar(100));
+
+create table modell (
+  modellnr int primary key auto_increment,
+  modellname varchar(100) not null,
+  markennr int not null,
+
+  foreign key (markennr) references marke(markennr));
+
+root@pkw>select table_name, engine from information_schema.tables where table_schema = 'pkw';
++------------+--------+
+| TABLE_NAME | ENGINE |
++------------+--------+
+| marke      | InnoDB |
+| modell     | InnoDB |
++------------+--------+
+2 rows in set (0,00 sec)
+
+root@pkw>alter table marke engine=myisam;
+ERROR 1217 (23000): Cannot delete or update a parent row: a foreign key constraint fails
+
+# Hinweis: InnoDB-Tabellen mit Constraints können nicht in MyISAM konvertiert werden.
+Werden die Tabellen ohne Constraints und auto_increment erstellt, können sie anschließend konvertiert werden
+
+create table marke (
+  markennr int,
+  markenname varchar(100));
+
+create table modell (
+  modellnr int,
+  modellname varchar(100) not null,
+  markennr int not null);
+
+root@pkw>alter table marke engine=myisam;
+Query OK, 0 rows affected (0,42 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+root@pkw>alter table modell engine=myisam;
+Query OK, 0 rows affected (0,07 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+# Tabellen im Datenbank-Verzeichnis
+[root@vm132 pkw]# pwd
+/mysql/db01/pkw
+[root@vm132 pkw]# ls -al
+insgesamt 164
+drwxr-x--- 2 mysql mysql     41 12. Mär 12:34 .
+drwxr-xr-x 7 mysql mysql   4096 12. Mär 12:25 ..
+-rw-r----- 1 mysql mysql 114688 12. Mär 12:34 marke.ibd
+-rw-r----- 1 mysql mysql 114688 12. Mär 12:34 modell.ibd
+
