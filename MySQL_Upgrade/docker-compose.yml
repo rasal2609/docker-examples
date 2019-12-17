@@ -1,0 +1,57 @@
+version: '3.7'
+services:
+  mysql1:
+    container_name: mysql1
+    env_file:
+      - src/mysql-server.env
+    image: mysql/mysql-server:8.0.15
+    volumes:
+      - ./src/datadir:/var/lib/mysql
+      - ./src/my.cnf:/etc/my.cnf
+    ports:
+      - "3301:3306"
+      - "33061:33060"
+    command: ["mysqld","--server_id=1","--binlog_checksum=NONE","--gtid_mode=ON","--enforce_gtid_consistency=ON","--log_bin","--log_slave_updates=ON","--master_info_repository=TABLE","--relay_log_info_repository=TABLE","--transaction_write_set_extraction=XXHASH64","--user=mysql","--skip-host-cache","--skip-name-resolve", "--default_authentication_plugin=mysql_native_password", "--expire-logs-days=5"]
+    networks:
+      testing_net:
+        ipv4_address: 172.50.1.1
+
+  mysql2:
+    container_name: mysql2
+    env_file:
+      - src/mysql-server.env
+    image: mysql/mysql-server:8.0.15
+    volumes:
+      - ./src/datadir2:/var/lib/mysql
+      - ./src/my02.cnf:/etc/my.cnf
+    ports:
+      - "3302:3306"
+      - "33062:33060"
+    command: ["mysqld","--server_id=1","--binlog_checksum=NONE","--gtid_mode=ON","--enforce_gtid_consistency=ON","--log_bin","--log_slave_updates=ON","--master_info_repository=TABLE","--relay_log_info_repository=TABLE","--transaction_write_set_extraction=XXHASH64","--user=mysql","--skip-host-cache","--skip-name-resolve", "--default_authentication_plugin=mysql_native_password", "--expire-logs-days=5"]
+    networks:
+      testing_net:
+        ipv4_address: 172.50.1.2
+
+  mysql3:
+    container_name: mysql3
+    env_file:
+      - src/mysql-server.env
+    image: mysql/mysql-server:8.0.15
+    volumes:
+      - ./src/datadir3:/var/lib/mysql
+      - ./src/my03.cnf:/etc/my.cnf
+    ports:
+      - "3303:3306"
+      - "33063:33060"
+    command: ["mysqld","--server_id=1","--binlog_checksum=NONE","--gtid_mode=ON","--enforce_gtid_consistency=ON","--log_bin","--log_slave_updates=ON","--master_info_repository=TABLE","--relay_log_info_repository=TABLE","--transaction_write_set_extraction=XXHASH64","--user=mysql","--skip-host-cache","--skip-name-resolve", "--default_authentication_plugin=mysql_native_password", "--expire-logs-days=5"]
+    networks:
+      testing_net:
+        ipv4_address: 172.50.1.3
+
+networks:
+  testing_net:
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.50.0.0/16
+
