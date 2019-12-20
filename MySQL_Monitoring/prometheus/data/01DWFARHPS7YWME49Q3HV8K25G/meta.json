@@ -1,0 +1,17 @@
+{
+	"ulid": "01DWFARHPS7YWME49Q3HV8K25G",
+	"minTime": 1576756800000,
+	"maxTime": 1576764000000,
+	"stats": {
+		"numSamples": 1519607,
+		"numSeries": 3160,
+		"numChunks": 12640
+	},
+	"compaction": {
+		"level": 1,
+		"sources": [
+			"01DWFARHPS7YWME49Q3HV8K25G"
+		]
+	},
+	"version": 1
+}
